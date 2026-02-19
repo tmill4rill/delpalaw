@@ -41,7 +41,8 @@ export function CheckoutTypeForm({ type }: { type: PaymentType }) {
   const [email, setEmail] = useState('')
   const [dollars, setDollars] = useState((config.defaultAmount / 100).toFixed(2))
 
-  const amountCents = Math.round(parseFloat(dollars || '0') * 100)
+  const parsedCents = Math.round(parseFloat(dollars || '0') * 100)
+  const amountCents = Number.isNaN(parsedCents) ? 0 : parsedCents
 
   return (
     <>
@@ -54,6 +55,8 @@ export function CheckoutTypeForm({ type }: { type: PaymentType }) {
             id="checkout-email"
             type="email"
             autoComplete="email"
+            required
+            aria-required="true"
             value={email}
             onChange={e => setEmail(e.target.value)}
             placeholder="your@email.com"
@@ -150,7 +153,6 @@ export interface CheckoutButtonProps {
 export function CheckoutButton({ type, serviceLabel, amount, email, label }: CheckoutButtonProps) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
 
   async function handleCheckout() {
     setLoading(true)
@@ -165,9 +167,11 @@ export function CheckoutButton({ type, serviceLabel, amount, email, label }: Che
       if (!res.ok || !data.url) {
         throw new Error(data.error ?? 'Checkout failed')
       }
-      router.push(data.url)
+      // Use window.location.href for external Stripe Checkout URL
+      window.location.href = data.url
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+    } finally {
       setLoading(false)
     }
   }

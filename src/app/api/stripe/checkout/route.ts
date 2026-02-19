@@ -24,6 +24,11 @@ export async function POST(request: NextRequest) {
     const sessionParams = buildCheckoutSession(result.data)
     const session = await stripe.checkout.sessions.create(sessionParams)
 
+    if (!session.url) {
+      console.error('[stripe/checkout] session.url was null, sessionId:', session.id)
+      return NextResponse.json({ error: 'Failed to create checkout session' }, { status: 500 })
+    }
+
     return NextResponse.json({ url: session.url })
   } catch (err) {
     console.error('[stripe/checkout] error:', err)
