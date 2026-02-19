@@ -4,9 +4,15 @@ const PHONE = process.env.NEXT_PUBLIC_PHONE_NUMBER || '[Phone TBD]'
 
 export function Hero() {
   return (
-    <section className="bg-blue-900 text-white py-20 px-4">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
+    <section className="bg-blue-900 text-white py-28 px-4 relative overflow-hidden">
+      {/* Radial glow for depth */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{ background: 'radial-gradient(ellipse at 75% 50%, #1A4B9C 0%, transparent 65%)' }}
+      />
+      <div className="max-w-5xl mx-auto relative">
+        <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
           Serious Legal Matters Deserve Serious Counsel.
         </h1>
         <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">

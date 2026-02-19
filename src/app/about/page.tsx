@@ -39,7 +39,7 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="py-12 px-4 bg-blue-50">
+      <section className="py-12 px-4 bg-cream">
         <div className="max-w-3xl mx-auto space-y-5 text-gray-700 text-base leading-relaxed">
           <h2 className="text-2xl font-bold text-blue-900">The Practice</h2>
           <p>

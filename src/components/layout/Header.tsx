@@ -21,7 +21,7 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-white font-bold text-xl tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 rounded"
+            className="text-white font-bold text-xl tracking-tight font-serif focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 rounded"
           >
             DELPALaw
           </Link>

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
@@ -7,6 +7,7 @@ import { DisclaimerBanner } from '@/components/layout/DisclaimerBanner'
 import { ChatWidget } from '@/components/chat/ChatWidget'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-serif' })
 
 export const metadata: Metadata = {
   title: {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased bg-white text-gray-900`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-white text-gray-900`}>
         <a href="#main-content" className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-[100] focus-visible:bg-white focus-visible:text-blue-900 focus-visible:px-4 focus-visible:py-2 focus-visible:rounded focus-visible:font-semibold">
           Skip to main content
         </a>

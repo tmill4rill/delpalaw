@@ -12,7 +12,7 @@ const areas = [
 
 export function ServiceAreasCallout() {
   return (
-    <section className="py-12 px-4 bg-blue-50">
+    <section className="py-12 px-4 bg-cream">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-2xl font-bold mb-3 text-blue-900">Serving Delaware &amp; Pennsylvania</h2>
         <p className="text-gray-600 mb-6 text-sm">
