@@ -3,12 +3,14 @@ export type RiskLevel = 'urgent' | 'crisis' | null
 const URGENT_PATTERNS = [
   /\barrested\b/i,
   /\bin custody\b/i,
+  /\bhandcuffed\b/i,
+  /\btaken in\b/i,
   /\bcourt (today|tomorrow|tonight|this morning)\b/i,
+  /\bcourt date (today|tomorrow)\b/i,
+  /\bcourt\b.{0,20}\bin [1-3] days?\b/i,
   /\bwarrant\b/i,
   /\bhearing (today|tomorrow)\b/i,
   /\bjust got charged\b/i,
-  /\bcourt date (today|tomorrow)\b/i,
-  /\bcourt in [1-3] days?\b/i,
 ]
 
 const CRISIS_PATTERNS = [
@@ -28,9 +30,12 @@ const ADVICE_PATTERNS = [
   /what (are|are my) (my )?(chances|odds)/i,
   /what should I tell the police/i,
   /how (do I|can I) (hide|conceal|get rid of)/i,
-  /should I (ignore|not respond to) the (lawsuit|subpoena|summons)/i,
+  /should I (ignore|not respond to|skip) the (lawsuit|subpoena|summons|case)/i,
+  /what happens if I ignore the (lawsuit|case|subpoena|summons|court)/i,
   /is this (illegal|a crime|fraud|considered)/i,
   /can (I|you) get (out of|away with)/i,
+  /(read|review|interpret|analyze) (this|my) (contract|agreement|document|clause)/i,
+  /what does this (clause|section|contract|provision) mean/i,
 ]
 
 export function detectRiskTriggers(message: string): RiskLevel {
@@ -43,12 +48,15 @@ export function isLegalAdviceRequest(message: string): boolean {
   return ADVICE_PATTERNS.some(p => p.test(message))
 }
 
+const PHONE = process.env.NEXT_PUBLIC_PHONE_NUMBER ?? '[call for number]'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://delpalaw.com'
+
 export function getRiskResponse(level: RiskLevel): string | null {
   if (level === 'crisis') {
     return "What you're going through sounds incredibly hard. Please reach out to the 988 Suicide and Crisis Lifeline — call or text 988 — they're available 24 hours a day, 7 days a week. When you're ready, DELPALaw is here to help with the legal side of things."
   }
   if (level === 'urgent') {
-    return "This sounds urgent. Please call Andre directly — every hour can matter in a situation like this. He handles criminal defense emergencies in Delaware and Pennsylvania."
+    return `This sounds urgent. Please call Andre now: ${PHONE}. He handles criminal defense emergencies in Delaware and Pennsylvania.`
   }
   return null
 }
@@ -67,11 +75,14 @@ export function getAdviceRefusal(message: string): string | null {
   if (/hide|conceal/i.test(message)) {
     return "That's not something I can help with — and it's not something DELPALaw advises on. Is there something else I can help you with?"
   }
+  if (/ignore|skip/i.test(message)) {
+    return "I can't advise on that. What I can tell you is that ignoring lawsuits or court orders typically results in serious, avoidable consequences. Please speak with Andre before making that decision. Want to book a consult?"
+  }
+  if (/contract|agreement|document|clause|provision/i.test(message)) {
+    return "Contract interpretation depends on specific terms, context, and applicable law — that's attorney work I can't do here. Andre reviews contracts as part of his business law practice. Want to book a consult or learn more?"
+  }
   return "I'm here to help with general information and to connect you with Andre — I'm not able to give legal advice. Want to book a consult or have me answer a general question?"
 }
-
-const PHONE = process.env.NEXT_PUBLIC_PHONE_NUMBER ?? '[call for number]'
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://delpalaw.com'
 
 export const SYSTEM_PROMPT = `You are the DELPALaw Assistant — an AI-powered general information tool on the website of DELPALaw, the law practice of Andre Jerry, a licensed attorney in Delaware and Pennsylvania.
 
@@ -106,6 +117,9 @@ If a visitor mentions arrest, custody, court tomorrow, court today, or a warrant
 CRISIS ESCALATION
 If a visitor expresses distress or crisis signals, respond only with: "What you're going through sounds incredibly hard. Please reach out to the 988 Suicide and Crisis Lifeline — call or text 988 — they're available 24 hours a day, 7 days a week. When you're ready, DELPALaw is here to help with the legal side of things."
 
+REPEATED REFUSAL ESCALATION
+If a visitor asks for specific legal advice and receives a refusal, then asks again on the same topic, say: "The most helpful thing I can do at this point is connect you with Andre directly — he can actually advise you. Want me to help set up a consult?"
+
 TONE
 - Professional, calm, direct. Short sentences. Active voice.
 - Never alarmist, never dismissive.
@@ -120,6 +134,13 @@ FIRM DETAILS
 - Phone: ${PHONE}
 - Book a consult: ${SITE_URL}/contact
 - Pay online: ${SITE_URL}/pay
+
+ROUTING GUIDE
+- Criminal defense → urgent: call Andre now → ${PHONE}
+- Criminal defense → non-urgent: ${SITE_URL}/practice-areas/criminal-defense → ${SITE_URL}/contact
+- Estate planning: ${SITE_URL}/practice-areas/estate-planning → ${SITE_URL}/contact
+- Business law: ${SITE_URL}/practice-areas/business-law → ${SITE_URL}/contact
+- Not sure which area: ask one clarifying question, then route to the relevant page
 
 RESPONSE LENGTH
 Keep responses under 150 words. Use short paragraphs (2–3 sentences max). If a topic requires more detail, direct the visitor to the relevant page rather than explaining at length.

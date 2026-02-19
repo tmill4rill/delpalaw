@@ -1,11 +1,12 @@
 'use client'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { ChatMessage } from './ChatMessage'
 
 interface Message {
   role: 'user' | 'assistant'
   content: string
   isUrgent?: boolean
+  isCrisis?: boolean
 }
 
 const INITIAL_MESSAGE: Message = {
@@ -23,16 +24,49 @@ export function ChatWidget() {
   const [error, setError] = useState<string | null>(null)
   const bottomRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const abortRef = useRef<AbortController | null>(null)
 
+  // Scroll to bottom only when widget is open
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
+    if (open) {
+      bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [messages, open])
 
+  // Focus input when opened
   useEffect(() => {
     if (open) {
       inputRef.current?.focus()
     }
   }, [open])
+
+  // Escape key closes widget and returns focus to toggle
+  useEffect(() => {
+    function handleEscape(e: KeyboardEvent) {
+      if (e.key === 'Escape' && open) {
+        setOpen(false)
+        toggleRef.current?.focus()
+      }
+    }
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
+  }, [open])
+
+  // Abort in-flight fetch on unmount
+  useEffect(() => {
+    return () => { abortRef.current?.abort() }
+  }, [])
+
+  const handleToggle = useCallback(() => {
+    setOpen(prev => {
+      if (prev) {
+        // Closing — schedule focus return after state update
+        setTimeout(() => toggleRef.current?.focus(), 0)
+      }
+      return !prev
+    })
+  }, [])
 
   async function send() {
     const text = input.trim()
@@ -45,6 +79,11 @@ export function ChatWidget() {
     setLoading(true)
     setError(null)
 
+    // Abort any previous in-flight request
+    abortRef.current?.abort()
+    const controller = new AbortController()
+    abortRef.current = controller
+
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
@@ -52,6 +91,7 @@ export function ChatWidget() {
         body: JSON.stringify({
           messages: newMessages.map(m => ({ role: m.role, content: m.content })),
         }),
+        signal: controller.signal,
       })
 
       const data = await res.json()
@@ -59,8 +99,10 @@ export function ChatWidget() {
         role: 'assistant',
         content: data.content,
         isUrgent: data.risk === 'urgent',
+        isCrisis: data.risk === 'crisis',
       }])
-    } catch {
+    } catch (err) {
+      if (err instanceof Error && err.name === 'AbortError') return
       setError('Connection error. Please try again or call Andre directly.')
     } finally {
       setLoading(false)
@@ -71,25 +113,31 @@ export function ChatWidget() {
     <div className="fixed bottom-4 right-4 z-50">
       {/* Toggle button */}
       <button
-        onClick={() => setOpen(!open)}
+        ref={toggleRef}
+        onClick={handleToggle}
         className="w-14 h-14 rounded-full bg-blue-700 text-white shadow-lg flex items-center justify-center hover:bg-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 transition-colors"
         aria-label={open ? 'Close chat' : 'Questions? Chat with us'}
         aria-expanded={open}
         aria-controls="chat-window"
       >
-        {open
-          ? <span aria-hidden="true">✕</span>
-          : <span aria-hidden="true">💬</span>
-        }
+        {open ? (
+          /* Close X icon */
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/>
+          </svg>
+        ) : (
+          /* Chat bubble icon */
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H5.17L4 15.17V4h16v10z"/>
+          </svg>
+        )}
       </button>
 
-      {/* Chat window */}
+      {/* Chat window — always in DOM, shown/hidden for aria-live announcements */}
       <div
         id="chat-window"
-        className={[
-          'absolute bottom-16 right-0 w-80 bg-white rounded-xl shadow-2xl border border-gray-200 flex flex-col',
-          open ? 'flex' : 'hidden',
-        ].join(' ')}
+        hidden={!open}
+        className="absolute bottom-16 right-0 w-80 bg-white rounded-xl shadow-2xl border border-gray-200 flex flex-col"
         style={{ height: '460px' }}
         role="dialog"
         aria-label="DELPALaw chat assistant"
@@ -101,15 +149,26 @@ export function ChatWidget() {
           <p className="text-xs text-blue-200 mt-0.5">AI-powered general information — not legal advice.</p>
         </div>
 
-        {/* Disclaimer banner — persistent */}
+        {/* Disclaimer banner — persistent, not dismissible */}
         <div className="bg-yellow-50 border-b border-yellow-200 px-3 py-2">
           <p className="text-xs text-yellow-900 leading-snug">{DISCLAIMER}</p>
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto px-3 py-3" aria-live="polite" aria-label="Chat messages">
+        <div
+          className="flex-1 overflow-y-auto px-3 py-3"
+          aria-live="polite"
+          aria-relevant="additions"
+          aria-label="Chat messages"
+        >
           {messages.map((m, i) => (
-            <ChatMessage key={i} role={m.role} content={m.content} isUrgent={m.isUrgent} />
+            <ChatMessage
+              key={i}
+              role={m.role}
+              content={m.content}
+              isUrgent={m.isUrgent}
+              isCrisis={m.isCrisis}
+            />
           ))}
           {loading && (
             <div className="flex justify-start mb-3" aria-label="Assistant is typing">

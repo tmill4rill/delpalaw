@@ -3,6 +3,10 @@ import Anthropic from '@anthropic-ai/sdk'
 import { z } from 'zod'
 import { detectRiskTriggers, getAdviceRefusal, getRiskResponse, SYSTEM_PROMPT } from '@/lib/chat-guardrails'
 
+if (!process.env.ANTHROPIC_API_KEY && process.env.NODE_ENV === 'production') {
+  throw new Error('ANTHROPIC_API_KEY is not set')
+}
+
 const client = new Anthropic()
 
 const schema = z.object({
@@ -39,7 +43,7 @@ export async function POST(req: NextRequest) {
     // Send to Claude with system prompt
     const response = await client.messages.create({
       model: 'claude-sonnet-4-6',
-      max_tokens: 400,
+      max_tokens: 300,
       system: SYSTEM_PROMPT,
       messages: messages.map(m => ({ role: m.role, content: m.content })),
     })
