@@ -17,6 +17,7 @@ interface FormErrors {
   name?: string
   email?: string
   practiceArea?: string
+  server?: string
 }
 
 const INITIAL_STATE: FormState = {
@@ -58,10 +59,15 @@ export function IntakeForm() {
     }
     setErrors({})
     setSubmitting(true)
-    // TODO: Wire to API route or form service (Formspree, Resend)
-    await new Promise(r => setTimeout(r, 500))
-    setSubmitting(false)
-    setSubmitted(true)
+    try {
+      // TODO: Wire to API route or form service (Formspree, Resend)
+      await new Promise(r => setTimeout(r, 500))
+      setSubmitted(true)
+    } catch {
+      setErrors({ server: 'Something went wrong. Please try again.' })
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -86,6 +92,12 @@ export function IntakeForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
+      {errors.server && (
+        <p role="alert" className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+          {errors.server}
+        </p>
+      )}
+
       {/* Name */}
       <div>
         <label htmlFor="intake-name" className="block text-sm font-medium text-gray-900 mb-1">
@@ -94,10 +106,12 @@ export function IntakeForm() {
         <input
           id="intake-name"
           type="text"
+          autoComplete="name"
           value={form.name}
           onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
           aria-required="true"
+          aria-invalid={errors.name ? 'true' : undefined}
           aria-describedby={errors.name ? 'intake-name-error' : undefined}
         />
         {errors.name && (
@@ -113,10 +127,12 @@ export function IntakeForm() {
         <input
           id="intake-email"
           type="email"
+          autoComplete="email"
           value={form.email}
           onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
           aria-required="true"
+          aria-invalid={errors.email ? 'true' : undefined}
           aria-describedby={errors.email ? 'intake-email-error' : undefined}
         />
         {errors.email && (
@@ -132,6 +148,7 @@ export function IntakeForm() {
         <input
           id="intake-phone"
           type="tel"
+          autoComplete="tel"
           value={form.phone}
           onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
@@ -149,6 +166,7 @@ export function IntakeForm() {
           onChange={e => setForm(f => ({ ...f, practiceArea: e.target.value }))}
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 bg-white"
           aria-required="true"
+          aria-invalid={errors.practiceArea ? 'true' : undefined}
           aria-describedby={errors.practiceArea ? 'intake-practice-area-error' : undefined}
         >
           <option value="">Select a practice area</option>
@@ -162,14 +180,13 @@ export function IntakeForm() {
         )}
       </div>
 
-      {/* Description with SpeechInput */}
+      {/* Description — label htmlFor provides accessible name; SpeechInput id links to it */}
       <div>
         <label htmlFor="speech-input" className="block text-sm font-medium text-gray-900 mb-1">
           Tell us what&rsquo;s going on
         </label>
         <SpeechInput
           id="speech-input"
-          label="Tell us what's going on"
           value={form.description}
           onChange={val => setForm(f => ({ ...f, description: val }))}
         />
@@ -187,7 +204,7 @@ export function IntakeForm() {
                 value={method}
                 checked={form.contactMethod === method}
                 onChange={() => setForm(f => ({ ...f, contactMethod: method }))}
-                className="focus-visible:outline-none"
+                className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
               />
               {method === 'email' ? 'Email' : 'Phone'}
             </label>
@@ -215,7 +232,8 @@ export function IntakeForm() {
 
       {/* Confidentiality notice */}
       <p className="text-xs text-gray-500 text-center">
-        🔒 Confidential inquiry. Attorney-client privilege attaches upon engagement. We will never spam you.
+        <span aria-hidden="true">🔒</span>{' '}
+        Confidential inquiry. Attorney-client privilege attaches upon engagement. We will never spam you.
       </p>
 
       <Button type="submit" variant="primary" disabled={submitting} className="w-full justify-center">

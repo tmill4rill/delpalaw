@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 // Minimal Web Speech API types (not in standard TypeScript DOM lib)
 interface SpeechRecognitionEvent extends Event {
   results: SpeechRecognitionResultList
+  resultIndex: number
 }
 
 interface SpeechRecognitionInstance {
@@ -32,18 +33,30 @@ interface SpeechInputProps {
   value: string
   onChange: (value: string) => void
   id?: string
+  /** Provides aria-label for standalone use. Omit when an external <label htmlFor> is present. */
   label?: string
 }
 
-export function SpeechInput({ value, onChange, id = 'speech-input', label = 'Description' }: SpeechInputProps) {
+export function SpeechInput({ value, onChange, id = 'speech-input', label }: SpeechInputProps) {
   const [isRecording, setIsRecording] = useState(false)
   const [speechSupported, setSpeechSupported] = useState(false)
   const [seconds, setSeconds] = useState(0)
   const recognitionRef = useRef<SpeechRecognitionInstance | null>(null)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
+  // Refs to avoid stale closures in recognition callbacks
+  const valueRef = useRef(value)
+  const onChangeRef = useRef(onChange)
+  useEffect(() => { valueRef.current = value }, [value])
+  useEffect(() => { onChangeRef.current = onChange }, [onChange])
+
   useEffect(() => {
     setSpeechSupported(getSpeechRecognition() !== null)
+    // Cleanup on unmount
+    return () => {
+      recognitionRef.current?.stop()
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
   }, [])
 
   function formatTime(secs: number) {
@@ -62,12 +75,14 @@ export function SpeechInput({ value, onChange, id = 'speech-input', label = 'Des
     recognition.lang = 'en-US'
 
     recognition.onresult = (event: SpeechRecognitionEvent) => {
+      // Only process new results starting from resultIndex to avoid duplicates
       const parts: string[] = []
-      for (let i = 0; i < event.results.length; i++) {
+      for (let i = event.resultIndex; i < event.results.length; i++) {
         parts.push(event.results[i][0].transcript)
       }
       const transcript = parts.join(' ').trim()
-      onChange(value ? `${value} ${transcript}` : transcript)
+      const current = valueRef.current
+      onChangeRef.current(current ? `${current} ${transcript}` : transcript)
     }
 
     recognition.onerror = () => stopRecording()
@@ -96,16 +111,18 @@ export function SpeechInput({ value, onChange, id = 'speech-input', label = 'Des
   return (
     <div className="space-y-2">
       <p className="text-xs text-gray-500">
-        🔒 Don&rsquo;t include sensitive details like SSNs, account numbers, or anything you wouldn&rsquo;t put in an email.
+        <span aria-hidden="true">🔒</span>{' '}
+        Don&rsquo;t include sensitive details like SSNs, account numbers, or anything you wouldn&rsquo;t put in an email.
       </p>
+      {/* id links this textarea to a <label htmlFor> in the parent; aria-label only needed for standalone use */}
       <textarea
         id={id}
         value={value}
         onChange={e => onChange(e.target.value)}
         rows={5}
         className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-        aria-label={label}
         placeholder="Briefly describe your situation..."
+        {...(label ? { 'aria-label': label } : {})}
       />
       {speechSupported && (
         <div className="flex items-center gap-3 flex-wrap">
@@ -115,11 +132,12 @@ export function SpeechInput({ value, onChange, id = 'speech-input', label = 'Des
               onClick={startRecording}
               className="text-sm text-blue-700 font-medium hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
             >
-              🎤 Speak instead of typing
+              <span aria-hidden="true">🎤</span>{' '}Speak instead of typing
             </button>
           ) : (
             <>
-              <span className="text-sm text-red-600 font-mono" aria-live="polite">
+              {/* aria-live="off" — visual-only counter; state changes announced via button labels */}
+              <span className="text-sm text-red-600 font-mono" aria-live="off" aria-hidden="true">
                 ● REC {formatTime(seconds)}
               </span>
               <button

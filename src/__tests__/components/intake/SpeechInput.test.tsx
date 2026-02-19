@@ -11,4 +11,11 @@ describe('SpeechInput', () => {
     render(<SpeechInput value="" onChange={() => {}} />)
     expect(screen.getByText(/sensitive details/i)).toBeInTheDocument()
   })
+
+  it('does not show speech controls when Speech API is unavailable', () => {
+    // jsdom does not implement SpeechRecognition, so speechSupported stays false
+    render(<SpeechInput value="" onChange={() => {}} />)
+    expect(screen.queryByText(/speak instead of typing/i)).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /stop/i })).not.toBeInTheDocument()
+  })
 })
