@@ -26,7 +26,8 @@
   --color-red-600:   #DC2626;
   --color-green-600: #16A34A;
 
-  /* Typography */
+  /* Typography — fallback stack; layout.tsx injects the Next.js-optimized --font-sans variable
+     which takes cascade precedence over this for all elements inside <body>. */
   --font-sans: Inter, system-ui, sans-serif;
 }
 
