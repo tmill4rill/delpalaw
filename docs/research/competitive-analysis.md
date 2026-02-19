@@ -46,7 +46,7 @@ Full data in `competitor-table.csv`. Summary of why each was included:
 
 ---
 
-## Pattern Summary
+## Pattern Summary by Category
 
 ### A) Visual Credibility
 
@@ -105,7 +105,7 @@ The best sites address urgency without exploiting fear in two ways:
 
 The fear-mongering pattern to avoid: several competitor sites (not in this set but found in broader search) use red color, countdown-style urgency, or "do not make this mistake" headlines. This pattern performs poorly with educated criminal defense clients who are already stressed.
 
-### C) Content That Closes
+### C) Content That Closes (by practice area)
 
 #### Criminal Defense
 
@@ -156,7 +156,7 @@ The fear-mongering pattern to avoid: several competitor sites (not in this set b
 **Risk reduction copy:**
 - The highest-converting business law sites frame legal services as risk reduction, not cost: "The cost of getting your operating agreement right is a fraction of the cost of a partner dispute." This positioning removes price sensitivity by reframing the value comparison.
 
-### D) Trust and Compliance
+### D) Trust & Compliance
 
 **Disclaimers:**
 All 23 sites include an attorney-client relationship disclaimer in the footer. The best executions (Fienman, Pagano) use a brief, plain-language version: "Contacting us does not create an attorney-client relationship. Do not send confidential information via this form." Less effective versions are multi-paragraph legalese that creates anxiety rather than clarity.
@@ -173,6 +173,30 @@ All 23 sites include an attorney-client relationship disclaimer in the footer. T
 - Only Fienman and Foley have functional skip-to-main-content links.
 - Most sites have adequate color contrast (dark text on white) but form labels and image alt text are inconsistent.
 - No local firm has published a WCAG 2.1 AA compliance statement.
+
+**Bar Admission Display and Attorney Advertising Compliance**
+
+*Bar number and admission display practices:*
+- None of the 23 sites in this set displays a bar admission number in the header, footer, or attorney bio. This is consistent with Delaware and Pennsylvania bar rules, which do not require bar number display on websites (unlike some other states, such as New York, which mandates attorney registration numbers on legal advertising).
+- Delaware Supreme Court Rules of Professional Conduct Rule 7.2(c) requires that any advertisement identify the responsible attorney or firm. All sites in this set satisfy this by displaying a firm name and attorney name, but only a subset (Fienman, Pagano, Raiser & Kenniff) do so with a named individual attorney clearly identified as the responsible professional.
+- Pennsylvania Rule 7.2(c)(ii) requires identification of at least one attorney responsible for the content of any legal advertising. Multi-attorney Pennsylvania firms (Fienman, Pagano, Ciccarelli) satisfy this in their bios; smaller sites with no named responsible attorney technically risk a disclosure gap.
+
+*Attorney advertising disclaimer language observed:*
+- All 23 sites include a footer disclaimer. The most common form is a variation of: "The information on this website is for general information purposes only. Nothing on this site should be taken as legal advice for any individual case or situation. Viewing this website does not create an attorney-client relationship." Fienman Defense and Bryan Brown both use short, plain-language versions (approximately 40–60 words) that are readable and non-anxiety-inducing. Several local sites (Barber, Foley, Zemble) use longer legalese versions (100–200 words) that may reduce footer credibility.
+- Pennsylvania-specific: PA rules require advertising to include the phrase "Attorney Advertising" or equivalent where there is a reasonable likelihood of confusion. No PA site in this set uses that exact phrase, but the footer disclaimer functions as the equivalent disclosure.
+- Delaware-specific: Delaware does not require the "Attorney Advertising" label but does require that all advertising be truthful and not misleading (DRPC Rule 7.1). Superlative claims like "best" or "top" require substantiation; Barber's "Top Lawyer" badges (from Delaware Today magazine) satisfy this because they reference a named third-party publication and specific years (2017–2024).
+
+*Dual-state (DE + PA) disclosure considerations for DELPALaw:*
+- A firm practicing in both states should clearly identify which state(s) the attorney is licensed in, either in the footer or attorney bio. The safe approach adopted by Garibian Law (the only other clearly dual-state firm in this set) is to list states of licensure in the attorney bio and footer: "Licensed in Delaware and Pennsylvania." This prevents any implication that the firm practices in states where it is not licensed.
+- If DELPALaw accepts online payments (which no competitor in this set currently does), the footer should include: (1) a statement that online payment does not create an attorney-client relationship unless a representation agreement is signed; and (2) a PCI-DSS compliant payment processor disclosure (e.g., "Payments processed securely via [Stripe/LawPay]"). LawPay is the dominant legal-industry processor; its use is specifically endorsed by state bar trust account guidance and it handles IOLTA-compliant trust account separation automatically.
+- For fee transparency: DELPALaw's planned fee ranges or flat-fee packages should include a disclaimer that published ranges are estimates and actual fees depend on case complexity — this is standard practice and prevents Rule 7.1 misleading-advertising exposure.
+
+*AI chat feature disclosures:*
+- No competitor in this set currently deploys an AI-powered chat feature. The disclosure obligations for AI chat in legal contexts are emerging but can be summarized from current ABA and state bar guidance (as of early 2026):
+  1. **AI identity disclosure**: Users must be informed they are interacting with an AI, not a human attorney. A header banner or chat opening message such as "This is an automated assistant. You are not speaking with an attorney. Do not share confidential information." satisfies this requirement under current ABA Formal Opinion 512 (2023) guidance on AI use in legal practice.
+  2. **No attorney-client relationship**: The chat must affirmatively state that the conversation does not create an attorney-client relationship and that no confidential privilege attaches to information submitted through the chat widget.
+  3. **Data handling**: If the AI processes user queries using a third-party LLM API (OpenAI, Anthropic, etc.), the firm's privacy policy must disclose this and describe how chat transcripts are stored, who can access them, and how long they are retained. Delaware and Pennsylvania do not currently have specific AI-in-legal-practice rules beyond general confidentiality (DRPC Rule 1.6 / PA RPC Rule 1.6), but both states have indicated that existing competence and confidentiality rules apply to AI tools.
+  4. **Recommended language** (footer + chat widget): "Our website uses an AI-powered chat tool to answer general questions. This tool is not an attorney. Responses are not legal advice and do not create an attorney-client relationship. Do not submit confidential case details through this chat. [Firm name] attorneys review chat inquiries before any representation is established."
 
 ---
 
@@ -198,7 +222,7 @@ These patterns appear consistently across the highest-converting sites in this a
 
 9. **Vulnerability-first homepage copy for criminal defense**: Bryan Brown's approach — writing for the emotional state of someone who was just arrested or charged, rather than listing the attorney's credentials — converts better with first-time criminal defense prospects. The copy acknowledges the situation before it sells the attorney.
 
-10. **Geographic specificity in copy**: "Wilmington criminal defense attorney" and "Delaware expungement lawyer" in H1s and practice area headers performs better for local search than generic "criminal defense attorney." Barber and Foley do this well. More importantly, specific courthouse knowledge ("I practice daily in New Castle County Court of Common Pleas") builds local credibility no out-of-state referral site can match.
+10. **Geographic specificity in copy**: "Wilmington criminal defense attorney" and "Delaware expungement lawyer" in H1s and practice area headers performs better for local search than generic "criminal defense attorney." Barber and Foley do this well. More importantly, specific courthouse knowledge ("I practice daily in New Castle County Court of Common Pleas") builds local credibility no out-of-state referral site can match. (Barber does geographic specificity well despite weaknesses in case results and blog content — take the geo-copy approach, not the thin content approach.)
 
 11. **Multi-channel intake (phone + form + chat)**: Fienman, Ciccarelli, Raiser & Kenniff. Each channel captures a different prospect personality: callers are high-urgency (criminal, immediate need), form submitters are researchers (estate planning, business planning), chat users are curious but not yet committed. Missing any channel means losing that segment.
 
