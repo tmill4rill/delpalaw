@@ -4,6 +4,7 @@ import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { DisclaimerBanner } from '@/components/layout/DisclaimerBanner'
+import { ChatWidget } from '@/components/chat/ChatWidget'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="main-content" tabIndex={-1} className="outline-none">{children}</main>
         <Footer />
+        <ChatWidget />
       </body>
     </html>
   )
