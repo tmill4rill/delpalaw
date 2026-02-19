@@ -10,9 +10,11 @@
   --color-blue-50:  #EEF3FC;
 
   /* Golds (brand accent, no Tailwind default) */
+  --color-gold-900: #7D5E20;
   --color-gold-700: #A07830;
   --color-gold-500: #C9A84C;
   --color-gold-300: #E8D4A0;
+  --color-gold-50:  #FBF7EE;
 
   /* Grays (overrides Tailwind defaults) */
   --color-gray-900: #1A1A1A;
