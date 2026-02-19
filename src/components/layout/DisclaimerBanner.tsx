@@ -17,7 +17,7 @@ export function DisclaimerBanner() {
   if (!visible) return null
 
   return (
-    <div role="alert" className="bg-gray-900 text-white text-xs py-2 px-4 flex items-center justify-between">
+    <div role="status" className="bg-gray-900 text-white text-xs py-2 px-4 flex items-center justify-between">
       <p className="flex-1 mr-4">
         This site provides general information only and does not constitute legal advice.{' '}
         <a

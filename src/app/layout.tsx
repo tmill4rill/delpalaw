@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <DisclaimerBanner />
         <Header />
-        <main id="main-content">{children}</main>
+        <main id="main-content" tabIndex={-1} className="outline-none">{children}</main>
         <Footer />
       </body>
     </html>

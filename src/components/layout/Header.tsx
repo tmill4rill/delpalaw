@@ -55,24 +55,26 @@ export function Header() {
           </button>
         </div>
 
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div id="mobile-menu" className="md:hidden bg-blue-900 pb-4">
-            {navLinks.map(link => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block text-white py-2 px-4 text-sm font-medium hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="px-4 pt-2">
-              <Button variant="urgent" href="/contact" className="w-full">Book a Consult</Button>
-            </div>
+        {/* Mobile menu — always in DOM so aria-controls target always resolves */}
+        <div
+          id="mobile-menu"
+          hidden={!menuOpen}
+          className="md:hidden bg-blue-900 pb-4"
+        >
+          {navLinks.map(link => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="block text-white py-2 px-4 text-sm font-medium hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <div className="px-4 pt-2">
+            <Button variant="urgent" href="/contact" className="w-full">Book a Consult</Button>
           </div>
-        )}
+        </div>
       </nav>
     </header>
   )
