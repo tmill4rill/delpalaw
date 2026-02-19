@@ -27,10 +27,10 @@
   --color-green-600: #16A34A;
 
   /* Typography */
-  --font-family-sans: Inter, system-ui, sans-serif;
+  --font-sans: Inter, system-ui, sans-serif;
 }
 
 body {
-  font-family: var(--font-family-sans);
+  font-family: var(--font-sans);
   color: var(--color-gray-900);
 }
