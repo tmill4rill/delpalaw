@@ -25,6 +25,7 @@ export function ServiceAreasCallout() {
             </li>
           ))}
         </ul>
+        {/* TODO: /service-areas page is created in Task 11 */}
         <Link
           href="/service-areas"
           className="text-blue-700 font-semibold text-sm hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"

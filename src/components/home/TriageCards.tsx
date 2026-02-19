@@ -36,7 +36,6 @@ export function TriageCards() {
             <Link
               key={card.href}
               href={card.href}
-              aria-label={card.heading}
               className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg"
             >
               <Card hover className="h-full flex flex-col">
