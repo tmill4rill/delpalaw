@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/* DELPALaw brand design tokens — Tailwind v4 theme override */
+@theme {
+  /* Blues (overrides Tailwind defaults) */
+  --color-blue-900: #0D2B6B;
+  --color-blue-700: #1A4B9C;
+  --color-blue-500: #2E6FD8;
+  --color-blue-100: #E8F0FB;
+  --color-blue-50:  #EEF3FC;
+
+  /* Golds (brand accent, no Tailwind default) */
+  --color-gold-700: #A07830;
+  --color-gold-500: #C9A84C;
+  --color-gold-300: #E8D4A0;
+
+  /* Grays (overrides Tailwind defaults) */
+  --color-gray-900: #1A1A1A;
+  --color-gray-600: #4A4A4A;
+  --color-gray-400: #9A9A9A;
+  --color-gray-200: #E8E8E8;
+  --color-gray-100: #F2F2F2;
+  --color-gray-50:  #F7F7F8;
+
+  /* Semantic colors (overrides Tailwind defaults) */
+  --color-red-600:   #DC2626;
+  --color-green-600: #16A34A;
+
+  /* Typography */
+  --font-family-sans: Inter, system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  color: var(--color-gray-900);
+}
