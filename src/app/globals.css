@@ -28,12 +28,21 @@
   --color-red-600:   #DC2626;
   --color-green-600: #16A34A;
 
-  /* Typography — fallback stack; layout.tsx injects the Next.js-optimized --font-sans variable
-     which takes cascade precedence over this for all elements inside <body>. */
+  /* Cream — warm off-white for section backgrounds */
+  --color-cream: #f2f0e8;
+
+  /* Typography — fallback stacks; layout.tsx injects the Next.js-optimized variables
+     which take cascade precedence over these for all elements inside <body>. */
   --font-sans: Inter, system-ui, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', serif;
 }
 
 body {
   font-family: var(--font-sans);
   color: var(--color-gray-900);
+}
+
+/* Serif headings — Playfair Display (injected via --font-serif by layout.tsx) */
+h1, h2, h3 {
+  font-family: var(--font-serif);
 }

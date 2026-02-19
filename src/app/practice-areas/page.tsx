@@ -40,13 +40,13 @@ export default function PracticeAreasPage() {
       <section className="py-16 px-4 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {areas.map(area => (
-            <Card key={area.href}>
+            <Card key={area.href} dark>
               <h2 className="text-xl font-bold mb-2">{area.heading}</h2>
-              <p className="text-gray-600 text-sm mb-4">{area.description}</p>
+              <p className="text-gray-300 text-sm mb-4">{area.description}</p>
               <ul className="space-y-1 mb-6">
                 {area.services.map(s => (
-                  <li key={s} className="text-sm text-gray-700 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-700 flex-shrink-0" aria-hidden="true" />
+                  <li key={s} className="text-sm text-gray-200 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0" aria-hidden="true" />
                     {s}
                   </li>
                 ))}
@@ -54,7 +54,7 @@ export default function PracticeAreasPage() {
               <Link
                 href={area.href}
                 aria-label={`Learn more about ${area.heading}`}
-                className="text-blue-700 font-semibold text-sm hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
+                className="text-gold-300 font-semibold text-sm hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 rounded"
               >
                 Learn more →
               </Link>

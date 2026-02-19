@@ -18,7 +18,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="py-16 px-4 bg-gray-50">
+    <section className="py-16 px-4 bg-cream">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-10">How DELPALaw Works</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -46,7 +46,7 @@ export default function ReviewsPage() {
       </section>
 
       {/* Google aggregate placeholder */}
-      <section className="py-6 px-4 bg-blue-50">
+      <section className="py-6 px-4 bg-cream">
         <div className="max-w-md mx-auto text-center">
           <p className="text-4xl font-bold text-blue-900">5.0</p>
           <p className="text-yellow-600 text-2xl" aria-hidden="true">★★★★★</p>

@@ -36,7 +36,7 @@ export default function BusinessLawPage() {
       />
 
       {/* Why businesses choose DELPALaw */}
-      <section className="py-12 px-4 bg-blue-50">
+      <section className="py-12 px-4 bg-cream">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-4 text-blue-900">Why Businesses Choose DELPALaw</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
