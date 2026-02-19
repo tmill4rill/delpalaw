@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { axe } from 'jest-axe'
 import { FaqAccordion } from '@/components/practice/FaqAccordion'
 
@@ -21,7 +22,15 @@ describe('FaqAccordion', () => {
 
   it('expands answer on click', () => {
     render(<FaqAccordion items={faqs} />)
-    fireEvent.click(screen.getByText('What should I do if arrested?'))
+    fireEvent.click(screen.getByRole('button', { name: /what should i do if arrested/i }))
+    expect(screen.getByText('Remain silent and call an attorney.')).toBeVisible()
+  })
+
+  it('expands answer on Enter key', async () => {
+    render(<FaqAccordion items={faqs} />)
+    const button = screen.getByRole('button', { name: /what should i do if arrested/i })
+    button.focus()
+    await userEvent.keyboard('{Enter}')
     expect(screen.getByText('Remain silent and call an attorney.')).toBeVisible()
   })
 

@@ -77,7 +77,7 @@ export default function BusinessLawPage() {
       {/* FAQ */}
       <section className="py-12 px-4 max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold mb-6">Business Law FAQ</h2>
-        <FaqAccordion items={faqs} />
+        <FaqAccordion items={faqs} id="business-law-faq" />
       </section>
 
       <CtaBand

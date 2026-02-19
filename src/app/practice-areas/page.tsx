@@ -40,7 +40,7 @@ export default function PracticeAreasPage() {
       <section className="py-16 px-4 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {areas.map(area => (
-            <Card key={area.href} hover>
+            <Card key={area.href}>
               <h2 className="text-xl font-bold mb-2">{area.heading}</h2>
               <p className="text-gray-600 text-sm mb-4">{area.description}</p>
               <ul className="space-y-1 mb-6">
@@ -53,6 +53,7 @@ export default function PracticeAreasPage() {
               </ul>
               <Link
                 href={area.href}
+                aria-label={`Learn more about ${area.heading}`}
                 className="text-blue-700 font-semibold text-sm hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
               >
                 Learn more →

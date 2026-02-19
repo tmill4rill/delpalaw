@@ -6,7 +6,7 @@ interface FaqItem {
   answer: string
 }
 
-export function FaqAccordion({ items }: { items: FaqItem[] }) {
+export function FaqAccordion({ items, id = 'faq' }: { items: FaqItem[]; id?: string }) {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
@@ -17,7 +17,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
             <button
               className="w-full flex justify-between items-center px-5 py-4 text-left font-semibold text-gray-900 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg"
               aria-expanded={open === i}
-              aria-controls={`faq-answer-${i}`}
+              aria-controls={`${id}-answer-${i}`}
               onClick={() => setOpen(open === i ? null : i)}
             >
               {item.question}
@@ -27,7 +27,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
             </button>
           </dt>
           <dd
-            id={`faq-answer-${i}`}
+            id={`${id}-answer-${i}`}
             hidden={open !== i}
             className="px-5 pb-4 text-gray-600 text-sm"
           >

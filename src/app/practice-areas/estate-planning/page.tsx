@@ -76,7 +76,7 @@ export default function EstatePlanningPage() {
       {/* FAQ */}
       <section className="py-12 px-4 max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold mb-6">Estate Planning FAQ</h2>
-        <FaqAccordion items={faqs} />
+        <FaqAccordion items={faqs} id="estate-planning-faq" />
       </section>
 
       <CtaBand

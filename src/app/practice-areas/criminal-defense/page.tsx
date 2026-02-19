@@ -26,7 +26,7 @@ const faqs = [
   { question: 'What is the difference between a misdemeanor and a felony?', answer: 'Misdemeanors are less serious offenses typically punishable by up to one year in jail. Felonies carry heavier penalties including potential prison time. Both benefit from early legal representation.' },
 ]
 
-const PHONE = process.env.NEXT_PUBLIC_PHONE_NUMBER || '[Phone TBD]'
+const PHONE = process.env.NEXT_PUBLIC_PHONE_NUMBER || null
 
 export default function CriminalDefensePage() {
   return (
@@ -34,8 +34,16 @@ export default function CriminalDefensePage() {
       <PageHero
         headline="Charged With a Crime in Delaware or Pennsylvania?"
         subhead="Every hour matters. Get an experienced criminal defense attorney on your side — today."
-        primaryCta={{ label: `Call Now: ${PHONE}`, href: `tel:${PHONE}` }}
-        secondaryCta={{ label: 'Book Emergency Consult', href: '/contact' }}
+        primaryCta={
+          PHONE
+            ? { label: `Call Now: ${PHONE}`, href: `tel:${PHONE}` }
+            : { label: 'Book Emergency Consult', href: '/contact' }
+        }
+        secondaryCta={
+          PHONE
+            ? { label: 'Book Emergency Consult', href: '/contact' }
+            : undefined
+        }
       />
 
       {/* What to do right now */}
@@ -43,12 +51,31 @@ export default function CriminalDefensePage() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-4 text-gray-900">What to Do Right Now</h2>
           <ol className="space-y-2 text-sm text-gray-800">
-            <li className="flex gap-3"><span className="font-bold text-blue-700">1.</span> Stay calm. Do not resist or argue.</li>
-            <li className="flex gap-3"><span className="font-bold text-blue-700">2.</span> Exercise your right to remain silent — do not answer questions.</li>
-            <li className="flex gap-3"><span className="font-bold text-blue-700">3.</span> Do not consent to a search of your person, car, or home.</li>
-            <li className="flex gap-3"><span className="font-bold text-blue-700">4.</span> Ask for an attorney immediately and do not speak until one is present.</li>
-            <li className="flex gap-3"><span className="font-bold text-blue-700">5.</span> Call DELPALaw as soon as you are able.</li>
+            <li className="flex gap-3"><span className="font-bold text-gold-700">1.</span> Stay calm. Do not resist or argue.</li>
+            <li className="flex gap-3"><span className="font-bold text-gold-700">2.</span> Exercise your right to remain silent — do not answer questions.</li>
+            <li className="flex gap-3"><span className="font-bold text-gold-700">3.</span> Do not consent to a search of your person, car, or home.</li>
+            <li className="flex gap-3"><span className="font-bold text-gold-700">4.</span> Ask for an attorney immediately and do not speak until one is present.</li>
+            <li className="flex gap-3"><span className="font-bold text-gold-700">5.</span> Call DELPALaw as soon as you are able.</li>
           </ol>
+        </div>
+      </section>
+
+      {/* Why choose DELPALaw for your defense */}
+      <section className="py-12 px-4 bg-blue-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-4 text-blue-900">Why Choose DELPALaw for Your Defense</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { heading: 'Available When It Matters', body: 'Andre takes emergency calls — not just 9-to-5. When you are charged, hours count.' },
+              { heading: 'Flat-Rate Fees', body: 'Know the cost before work begins. No hourly billing surprises on top of an already stressful situation.' },
+              { heading: 'Dual-State Coverage', body: 'Licensed in both Delaware and Pennsylvania — one attorney who knows both jurisdictions.' },
+            ].map(item => (
+              <div key={item.heading} className="bg-white rounded-lg p-5 border border-gray-200">
+                <h3 className="font-semibold text-blue-900 mb-2">{item.heading}</h3>
+                <p className="text-sm text-gray-600">{item.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -75,14 +102,14 @@ export default function CriminalDefensePage() {
       {/* FAQ */}
       <section className="py-12 px-4 max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold mb-6">Criminal Defense FAQ</h2>
-        <FaqAccordion items={faqs} />
+        <FaqAccordion items={faqs} id="criminal-defense-faq" />
       </section>
 
       <CtaBand
         heading="Don't Wait. Your Defense Starts Now."
         subhead="Call or book an emergency consult — available when it matters most."
         primaryCta={{ label: 'Book Emergency Consult', href: '/contact' }}
-        secondaryCta={{ label: `Call: ${PHONE}`, href: `tel:${PHONE}` }}
+        secondaryCta={PHONE ? { label: `Call: ${PHONE}`, href: `tel:${PHONE}` } : undefined}
       />
     </>
   )
