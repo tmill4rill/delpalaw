@@ -15,40 +15,40 @@
 
 | Token Name | Hex | RGB | Usage | Contrast on White | WCAG Grade |
 |---|---|---|---|---|---|
-| `brand-blue-900` | `#0D2B6B` | rgb(13, 43, 107) | Primary brand, nav background, hero backgrounds, headers | 13.8:1 | AAA |
-| `brand-blue-700` | `#1A4B9C` | rgb(26, 75, 156) | Primary buttons, text links, active nav states | 8.6:1 | AAA |
-| `brand-blue-500` | `#2E6FD8` | rgb(46, 111, 216) | Hover states, focus rings, accent borders | 4.6:1 | AA |
-| `brand-blue-100` | `#E8F0FB` | rgb(232, 240, 251) | Light blue backgrounds, trust bar background alternative | — | Background use only |
-| `brand-blue-50` | `#F0F5FD` | rgb(240, 245, 253) | Very light blue sections, trust bar base | — | Background use only |
+| `blue-900` | `#0D2B6B` | rgb(13, 43, 107) | Primary brand, nav background, hero backgrounds, headers | 13.8:1 | AAA |
+| `blue-700` | `#1A4B9C` | rgb(26, 75, 156) | Primary buttons, text links, active nav states | 8.6:1 | AAA |
+| `blue-500` | `#2E6FD8` | rgb(46, 111, 216) | Hover states, focus rings, accent borders | 4.6:1 | AA |
+| `blue-100` | `#E8F0FB` | rgb(232, 240, 251) | Light blue backgrounds, trust bar background alternative | — | Background use only |
+| `blue-50` | `#EEF3FC` | rgb(238, 243, 252) | Very light blue sections, trust bar base | — | Background use only |
 
 #### Gold Family
 
 | Token Name | Hex | RGB | Usage | Contrast on White | WCAG Grade |
 |---|---|---|---|---|---|
-| `brand-gold-700` | `#A07830` | rgb(160, 120, 48) | Gold text on light backgrounds, "Call Now" button bg, trust bar accent | 5.1:1 | AA |
-| `brand-gold-500` | `#C9A84C` | rgb(201, 168, 76) | Decorative accents on dark backgrounds ONLY, dividers, badge borders | 2.4:1 | FAIL on white |
-| `brand-gold-300` | `#E8D4A0` | rgb(232, 212, 160) | Very light gold tint, background decoration only | — | Background use only |
+| `gold-700` | `#A07830` | rgb(160, 120, 48) | Gold text on light backgrounds, "Call Now" button bg, trust bar accent | 5.1:1 | AA |
+| `gold-500` | `#C9A84C` | rgb(201, 168, 76) | Decorative accents on dark backgrounds ONLY, dividers, badge borders | 2.4:1 | FAIL on white |
+| `gold-300` | `#E8D4A0` | rgb(232, 212, 160) | Very light gold tint, background decoration only | — | Background use only |
 
-**Critical rule:** `brand-gold-500` (`#C9A84C`) fails WCAG AA contrast on white (`#FFFFFF`) at 2.4:1. It must never be used as text on white or light backgrounds. It is a decorative-only color on dark (blue-900) backgrounds, where it achieves 6.2:1 contrast and passes AA.
+**Critical rule:** `gold-500` (`#C9A84C`) fails WCAG AA contrast on white (`#FFFFFF`) at 2.4:1. It must never be used as text on white or light backgrounds. It is a decorative-only color on dark (blue-900) backgrounds, where it achieves 6.2:1 contrast and passes AA.
 
 #### Neutral / Gray Family
 
 | Token Name | Hex | RGB | Usage | Contrast on White | WCAG Grade |
 |---|---|---|---|---|---|
-| `brand-gray-900` | `#1A1A1A` | rgb(26, 26, 26) | Body text, primary text | 18.1:1 | AAA |
-| `brand-gray-600` | `#4A4A4A` | rgb(74, 74, 74) | Secondary text, captions, subheads, footer text | 9.7:1 | AAA |
-| `brand-gray-400` | `#9A9A9A` | rgb(154, 154, 154) | Placeholder text (decorative only — not label replacement), icons | 2.8:1 | FAIL — decorative use only |
-| `brand-gray-200` | `#E8E8E8` | rgb(232, 232, 232) | Borders, input borders, dividers, card borders | — | Border use only |
-| `brand-gray-100` | `#F2F2F2` | rgb(242, 242, 242) | Alternate section backgrounds | — | Background use only |
-| `brand-gray-50` | `#F7F7F8` | rgb(247, 247, 248) | Page backgrounds, card surfaces, alternating sections | — | Background use only |
+| `gray-900` | `#1A1A1A` | rgb(26, 26, 26) | Body text, primary text | 18.1:1 | AAA |
+| `gray-600` | `#4A4A4A` | rgb(74, 74, 74) | Secondary text, captions, subheads, footer text | 9.7:1 | AAA |
+| `gray-400` | `#9A9A9A` | rgb(154, 154, 154) | Placeholder text (decorative only — not label replacement), icons | 2.8:1 | FAIL — decorative use only |
+| `gray-200` | `#E8E8E8` | rgb(232, 232, 232) | Borders, input borders, dividers, card borders | — | Border use only |
+| `gray-100` | `#F2F2F2` | rgb(242, 242, 242) | Alternate section backgrounds | — | Background use only |
+| `gray-50` | `#F7F7F8` | rgb(247, 247, 248) | Page backgrounds, card surfaces, alternating sections | — | Background use only |
 
 #### Utility Colors
 
 | Token Name | Hex | Usage | Contrast on White | WCAG Grade |
 |---|---|---|---|---|
 | `white` | `#FFFFFF` | Card surfaces, hero text on dark, button text on blue-700/blue-900 | — | — |
-| `brand-red-600` | `#DC2626` | Error states (form validation), error borders, error text | 5.9:1 | AA |
-| `brand-green-600` | `#16A34A` | Success states (payment confirmation, form success), success icons | 4.6:1 | AA |
+| `red-600` | `#DC2626` | Error states (form validation), error borders, error text | 5.9:1 | AA |
+| `green-600` | `#16A34A` | Success states (payment confirmation, form success), success icons | 4.6:1 | AA |
 
 ---
 
@@ -68,53 +68,53 @@
 
 | Text Color | Background | Ratio | Grade |
 |---|---|---|---|
-| `brand-gray-900` (#1A1A1A) | `white` (#FFFFFF) | 18.1:1 | AAA |
-| `brand-gray-900` (#1A1A1A) | `brand-gray-50` (#F7F7F8) | 17.6:1 | AAA |
-| `brand-gray-600` (#4A4A4A) | `white` (#FFFFFF) | 9.7:1 | AAA |
-| `brand-blue-700` (#1A4B9C) | `white` (#FFFFFF) | 8.6:1 | AAA |
-| `brand-blue-900` (#0D2B6B) | `white` (#FFFFFF) | 13.8:1 | AAA |
-| `brand-gold-700` (#A07830) | `white` (#FFFFFF) | 5.1:1 | AA |
-| `brand-gold-700` (#A07830) | `brand-gray-50` (#F7F7F8) | 4.9:1 | AA |
-| `white` (#FFFFFF) | `brand-blue-900` (#0D2B6B) | 13.8:1 | AAA |
-| `white` (#FFFFFF) | `brand-blue-700` (#1A4B9C) | 8.6:1 | AAA |
-| `white` (#FFFFFF) | `brand-gold-700` (#A07830) | 4.1:1 | AA (large text only at 14px bold+; fails for normal body) |
-| `brand-gold-500` (#C9A84C) | `brand-blue-900` (#0D2B6B) | 6.2:1 | AA |
-| `brand-red-600` (#DC2626) | `white` (#FFFFFF) | 5.9:1 | AA |
+| `gray-900` (#1A1A1A) | `white` (#FFFFFF) | 18.1:1 | AAA |
+| `gray-900` (#1A1A1A) | `gray-50` (#F7F7F8) | 17.6:1 | AAA |
+| `gray-600` (#4A4A4A) | `white` (#FFFFFF) | 9.7:1 | AAA |
+| `blue-700` (#1A4B9C) | `white` (#FFFFFF) | 8.6:1 | AAA |
+| `blue-900` (#0D2B6B) | `white` (#FFFFFF) | 13.8:1 | AAA |
+| `gold-700` (#A07830) | `white` (#FFFFFF) | 5.1:1 | AA |
+| `gold-700` (#A07830) | `gray-50` (#F7F7F8) | 4.9:1 | AA |
+| `white` (#FFFFFF) | `blue-900` (#0D2B6B) | 13.8:1 | AAA |
+| `white` (#FFFFFF) | `blue-700` (#1A4B9C) | 8.6:1 | AAA |
+| `white` (#FFFFFF) | `gold-700` (#A07830) | 4.1:1 | AA (large text only at 14px bold+; fails for normal body) |
+| `gold-500` (#C9A84C) | `blue-900` (#0D2B6B) | 6.2:1 | AA |
+| `red-600` (#DC2626) | `white` (#FFFFFF) | 5.9:1 | AA |
 
 **Prohibited combinations:**
 
 | Text | Background | Ratio | Why Prohibited |
 |---|---|---|---|
-| `brand-gold-500` (#C9A84C) | `white` (#FFFFFF) | 2.4:1 | FAIL — insufficient contrast |
-| `brand-gold-500` (#C9A84C) | `brand-gray-50` (#F7F7F8) | 2.3:1 | FAIL |
-| `brand-gray-400` (#9A9A9A) | `white` (#FFFFFF) | 2.8:1 | FAIL — placeholder only |
-| `brand-blue-500` (#2E6FD8) | `brand-blue-100` (#E8F0FB) | 2.1:1 | FAIL — do not use as text |
+| `gold-500` (#C9A84C) | `white` (#FFFFFF) | 2.4:1 | FAIL — insufficient contrast |
+| `gold-500` (#C9A84C) | `gray-50` (#F7F7F8) | 2.3:1 | FAIL |
+| `gray-400` (#9A9A9A) | `white` (#FFFFFF) | 2.8:1 | FAIL — placeholder only |
+| `blue-500` (#2E6FD8) | `blue-100` (#E8F0FB) | 2.1:1 | FAIL — do not use as text |
 
 ---
 
 ### Usage Rules per Color
 
-**Blue (`brand-blue-900`, `brand-blue-700`, `brand-blue-500`)**
+**Blue (`blue-900`, `blue-700`, `blue-500`)**
 - Communicates: authority, trust, professionalism, stability
 - Primary application: navigation, header background, primary CTA buttons, text links, hero section backgrounds, section header text
-- `brand-blue-900`: nav, hero backgrounds, CTA bands, footer
-- `brand-blue-700`: primary buttons, text links, card headings
-- `brand-blue-500`: hover states, focus rings, accent borders, interactive highlights
+- `blue-900`: nav, hero backgrounds, CTA bands, footer
+- `blue-700`: primary buttons, text links, card headings
+- `blue-500`: hover states, focus rings, accent borders, interactive highlights
 - One blue call to action is the primary action on any given section — do not stack multiple blue CTAs
 
-**Gold (`brand-gold-700`, `brand-gold-500`)**
+**Gold (`gold-700`, `gold-500`)**
 - Communicates: premium, urgency, authority accent
-- `brand-gold-700`: "Call Now" button background, gold text labels on light backgrounds, pricing callout text, trust bar accent text. Maximum one gold element per viewport height at any scroll position.
-- `brand-gold-500`: decorative accents on dark blue backgrounds (trust bar top border, divider lines on blue sections), badge border colors. Never as text on white or light backgrounds.
+- `gold-700`: "Call Now" button background, gold text labels on light backgrounds, pricing callout text, trust bar accent text. Maximum one gold element per viewport height at any scroll position.
+- `gold-500`: decorative accents on dark blue backgrounds (trust bar top border, divider lines on blue sections), badge border colors. Never as text on white or light backgrounds.
 - Gold is not a background color for sections — only for buttons and small UI elements.
 
-**Gray (`brand-gray-900`, `brand-gray-600`, `brand-gray-400`, `brand-gray-200`, `brand-gray-100`, `brand-gray-50`)**
+**Gray (`gray-900`, `gray-600`, `gray-400`, `gray-200`, `gray-100`, `gray-50`)**
 - Communicates: structure, hierarchy, neutral clarity
-- `brand-gray-900`: all body text, form labels, navigation link hover (on white bg)
-- `brand-gray-600`: secondary body text, captions, footer links, subheadings below H3, form helper text
-- `brand-gray-400`: placeholder text in inputs (not used as a label — must have a visible label element above the input)
-- `brand-gray-200`: input borders, card borders, horizontal rules, section dividers
-- `brand-gray-100` / `brand-gray-50`: alternating section backgrounds (one section white, next gray-50), card surface backgrounds
+- `gray-900`: all body text, form labels, navigation link hover (on white bg)
+- `gray-600`: secondary body text, captions, footer links, subheadings below H3, form helper text
+- `gray-400`: placeholder text in inputs (not used as a label — must have a visible label element above the input)
+- `gray-200`: input borders, card borders, horizontal rules, section dividers
+- `gray-100` / `gray-50`: alternating section backgrounds (one section white, next gray-50), card surface backgrounds
 
 **White (`#FFFFFF`)**
 - Hero text on dark blue backgrounds
@@ -147,7 +147,7 @@ All typography uses **Inter** (Google Fonts). Inter is loaded via `next/font/goo
 - No body text below 16px on mobile.
 - No caption or helper text below 14px on mobile.
 - Legal disclaimer text minimum 12px — do not go smaller.
-- No text rendered in `brand-gray-400` at any size — this color fails contrast at all sizes for text.
+- No text rendered in `gray-400` at any size — this color fails contrast at all sizes for text.
 
 **Tailwind config additions for type scale:**
 
@@ -192,18 +192,18 @@ All components are implemented in Tailwind CSS. CSS values are provided for case
 Use: Primary CTA throughout the site — "Book a Free Consult," "Send My Intake Request," "Get Started."
 
 ```
-Background:        brand-blue-700 (#1A4B9C)
+Background:        blue-700 (#1A4B9C)
 Text:              white (#FFFFFF)
 Font:              Inter 600 15px
 Padding:           12px 24px
 Border-radius:     6px
 Border:            none
 Contrast ratio:    8.6:1 — AAA
-Hover background:  brand-blue-900 (#0D2B6B)
+Hover background:  blue-900 (#0D2B6B)
 Hover transition:  background-color 150ms ease
-Active:            scale(0.98) + brand-blue-900 background
-Focus:             3px solid brand-blue-500 (#2E6FD8), outline-offset 2px
-Disabled:          brand-gray-400 background, white text, cursor: not-allowed
+Active:            scale(0.98) + blue-900 background
+Focus:             3px solid blue-500 (#2E6FD8), outline-offset 2px
+Disabled:          gray-400 background, white text, cursor: not-allowed
 Min height:        44px (WCAG 2.5.5 touch target)
 Min width:         120px
 ```
@@ -224,7 +224,7 @@ min-h-[44px]
 Use: "Call Now: [phone]" — Criminal Defense hero, sticky mobile bar, urgent escalation contexts. Used sparingly — one per page maximum on non-criminal-defense pages.
 
 ```
-Background:        brand-gold-700 (#A07830)
+Background:        gold-700 (#A07830)
 Text:              white (#FFFFFF)
 Font:              Inter 600 15px
 Padding:           12px 24px
@@ -232,11 +232,11 @@ Border-radius:     6px
 Border:            none
 Contrast ratio:    4.1:1 white on gold-700 — passes AA for large text; note this is below AAA
                    NOTE: At 15px/600 weight this qualifies as "large text" under WCAG (14px bold+)
-                   and meets the 3:1 minimum. For AAA compliance, use brand-gold-900 (#7A5820) at 7.3:1.
+                   and meets the 3:1 minimum. For AAA compliance, use gold-900 (#7A5820) at 7.3:1.
                    AAA recommendation: Use #7A5820 if AAA is required. For AA compliance, #A07830 is acceptable.
 Hover background:  #7A5820 (darken 15%)
 Hover transition:  background-color 150ms ease
-Focus:             3px solid brand-blue-500 (#2E6FD8), outline-offset 2px
+Focus:             3px solid blue-500 (#2E6FD8), outline-offset 2px
 Min height:        44px
 ```
 
@@ -250,7 +250,7 @@ min-h-[44px]
 
 **As a text link (alternative "Call Now" pattern):**
 ```
-Color:    brand-gold-700 (#A07830) on white/gray-50 backgrounds — AA compliant
+Color:    gold-700 (#A07830) on white/gray-50 backgrounds — AA compliant
 Font:     Inter 600 15px
 No underline by default; underline on hover
 ```
@@ -263,23 +263,23 @@ Use: Secondary CTAs — "See Practice Areas," "Type instead," "See Our Packages"
 
 ```
 Background:        transparent
-Border:            2px solid brand-blue-700 (#1A4B9C)
-Text:              brand-blue-700 (#1A4B9C)
+Border:            2px solid blue-700 (#1A4B9C)
+Text:              blue-700 (#1A4B9C)
 Font:              Inter 600 15px
 Padding:           10px 22px (2px less than primary to account for border)
 Border-radius:     6px
 Contrast ratio:    8.6:1 (blue-700 on white) — AAA
-Hover background:  brand-blue-50 (#F0F5FD)
-Hover border:      brand-blue-900 (#0D2B6B)
-Hover text:        brand-blue-900 (#0D2B6B)
-Focus:             3px solid brand-blue-500 (#2E6FD8), outline-offset 2px
+Hover background:  blue-50 (#EEF3FC)
+Hover border:      blue-900 (#0D2B6B)
+Hover text:        blue-900 (#0D2B6B)
+Focus:             3px solid blue-500 (#2E6FD8), outline-offset 2px
 Min height:        44px
 ```
 
 Tailwind classes:
 ```
 bg-transparent border-2 border-[#1A4B9C] text-[#1A4B9C] font-semibold text-[15px] px-[22px] py-[10px] rounded-[6px]
-hover:bg-[#F0F5FD] hover:border-[#0D2B6B] hover:text-[#0D2B6B] transition-colors duration-150
+hover:bg-[#EEF3FC] hover:border-[#0D2B6B] hover:text-[#0D2B6B] transition-colors duration-150
 focus:outline-none focus:ring-3 focus:ring-[#2E6FD8] focus:ring-offset-2
 min-h-[44px]
 ```
@@ -292,7 +292,7 @@ Use: Practice area cards, testimonial cards, package tier cards, triage cards on
 
 ```
 Background:        white (#FFFFFF)
-Border:            1px solid brand-gray-200 (#E8E8E8)
+Border:            1px solid gray-200 (#E8E8E8)
 Border-radius:     8px
 Box shadow:        0 2px 8px rgba(0, 0, 0, 0.06)
 Hover box shadow:  0 4px 16px rgba(0, 0, 0, 0.10)
@@ -302,10 +302,10 @@ Padding:           24px
 Gap (in grid):     24px
 ```
 
-**Card heading:** Inter 600 20px, brand-blue-900, margin-bottom 8px
-**Card body text:** Inter 400 16px, brand-gray-900, line-height 1.6
-**Card CTA link:** Inter 600 15px, brand-blue-700, underline on hover
-**Card trust badge (when present):** brand-gold-700 text, brand-gray-50 background pill, 12px Inter 500
+**Card heading:** Inter 600 20px, blue-900, margin-bottom 8px
+**Card body text:** Inter 400 16px, gray-900, line-height 1.6
+**Card CTA link:** Inter 600 15px, blue-700, underline on hover
+**Card trust badge (when present):** gold-700 text, gray-50 background pill, 12px Inter 500
 
 Tailwind classes:
 ```
@@ -317,10 +317,10 @@ p-6
 **Featured/highlighted card variant (e.g., recommended package tier):**
 
 ```
-Border:            2px solid brand-blue-700 (#1A4B9C)
+Border:            2px solid blue-700 (#1A4B9C)
 Border-radius:     8px
 Box shadow:        0 4px 16px rgba(26, 75, 156, 0.15)
-"Most Popular" badge: brand-blue-700 background, white text, 12px Inter 600, border-radius 4px, positioned top-right
+"Most Popular" badge: blue-700 background, white text, 12px Inter 600, border-radius 4px, positioned top-right
 ```
 
 ---
@@ -328,7 +328,7 @@ Box shadow:        0 4px 16px rgba(26, 75, 156, 0.15)
 ### Navigation / Header
 
 ```
-Background:        brand-blue-900 (#0D2B6B)
+Background:        blue-900 (#0D2B6B)
 Height:            64px (desktop), 56px (mobile)
 Position:          fixed, top: 0, width: 100%, z-index: 50
 Box shadow:        0 2px 8px rgba(0, 0, 0, 0.15)
@@ -342,13 +342,13 @@ Nav links:
   Font:            Inter 500 15px
   Color:           white (#FFFFFF) at 90% opacity (rgba(255,255,255,0.9))
   Hover color:     white (#FFFFFF) at 100% opacity
-  Hover underline: 2px solid brand-gold-500 (#C9A84C) — decorative, not text
-  Active state:    white + 2px underline (brand-gold-500)
-  Focus:           3px solid brand-blue-500, outline-offset 2px
+  Hover underline: 2px solid gold-500 (#C9A84C) — decorative, not text
+  Active state:    white + 2px underline (gold-500)
+  Focus:           3px solid blue-500, outline-offset 2px
 
 Sticky CTA button (always visible in header):
-  Background:      brand-gold-700 (#A07830)
-  Text:            white, Inter 600 14px
+  Background:      gold-700 (#A07830)
+  Text:            white, Inter 600 15px
   Copy:            "Book a Consult"
   Padding:         8px 16px
   Border-radius:   6px
@@ -361,10 +361,10 @@ Page body padding-top: 64px (desktop), 56px (mobile) to account for fixed header
 
 ```
 Hamburger icon:    3 lines, white, 24px, appears at ≤768px viewport
-Overlay:           full screen, background brand-blue-900 (#0D2B6B), z-index 100
+Overlay:           full screen, background blue-900 (#0D2B6B), z-index 100
 Close button:      X icon, white, top-right, 44x44px touch target
 Nav items:         Inter 500 18px, white, stacked vertically, 48px min height per item
-Phone link:        First item, Inter 600 18px, brand-gold-500, tel: link, "Call: [phone]"
+Phone link:        First item, Inter 600 18px, gold-500, tel: link, "Call: [phone]" (`gold-500` used here on `blue-900` background (6.2:1 — AA ✓). `gold-500` is NOT permitted as text on white or gray-50 backgrounds — this is one of the only approved text uses.)
 "Book a Consult":  gold-700 button, full width, margin-top 24px
 Overlay open animation: slide-in from right, 200ms ease
 Overflow: hidden on <body> when overlay is open (prevent background scroll)
@@ -377,23 +377,23 @@ Overflow: hidden on <body> when overlay is open (prevent background scroll)
 Use: Directly below hero section on homepage and pillar pages. Horizontal strip communicating key credentials.
 
 ```
-Background:        brand-blue-50 (#F0F5FD) or brand-gray-50 (#F7F7F8)
-Border-top:        2px solid brand-gold-500 (#C9A84C)
-Border-bottom:     1px solid brand-gray-200 (#E8E8E8)
+Background:        blue-50 (#EEF3FC) or gray-50 (#F7F7F8)
+Border-top:        2px solid gold-500 (#C9A84C)
+Border-bottom:     1px solid gray-200 (#E8E8E8)
 Padding:           16px 0
 ```
 
 **Trust bar items:**
-- Google review stars + count: Inter 600 14px, brand-gray-900; stars in brand-gold-500 (decorative)
+- Google review stars + count: Inter 600 14px, gray-900; stars in gold-500 (decorative)
 - Bar admission badges: badge image (placeholder), 32px height, alt text "Delaware Bar" / "Pennsylvania Bar"
-- Credential text: Inter 500 14px, brand-gray-600
-- Separator between items: 1px solid brand-gray-200, height 20px
+- Credential text: Inter 500 14px, gray-600
+- Separator between items: 1px solid gray-200, height 20px
 
 **Layout:** `flex flex-wrap justify-center gap-x-8 gap-y-4 items-center` (centers on mobile when items wrap)
 
 **"Available for emergency consultations" badge (Criminal Defense hero trust bar only):**
 ```
-Background:        brand-gold-700 (#A07830)
+Background:        gold-700 (#A07830)
 Text:              white, Inter 600 13px
 Border-radius:     4px
 Padding:           4px 10px
@@ -408,32 +408,32 @@ All form fields share a consistent visual system. Forms must be usable with keyb
 **Input field (text, email, tel, select):**
 
 ```
-Border:            1px solid brand-gray-200 (#E8E8E8)
+Border:            1px solid gray-200 (#E8E8E8)
 Border-radius:     6px
 Padding:           10px 14px
 Font:              Inter 400 16px (never below 16px — iOS zoom trigger prevention)
-Color:             brand-gray-900 (#1A1A1A)
+Color:             gray-900 (#1A1A1A)
 Background:        white (#FFFFFF)
 Height:            44px minimum (touch target compliance)
 
 Focus state:
-  Border:          2px solid brand-blue-500 (#2E6FD8)
+  Border:          2px solid blue-500 (#2E6FD8)
   Box shadow:      0 0 0 3px rgba(46, 111, 216, 0.15)
   Outline:         none (box shadow is the focus indicator — meets WCAG 2.4.11 Focus Appearance)
 
 Error state:
-  Border:          2px solid brand-red-600 (#DC2626)
+  Border:          2px solid red-600 (#DC2626)
   Box shadow:      0 0 0 3px rgba(220, 38, 38, 0.10)
 
 Success state (after validation):
-  Border:          2px solid brand-green-600 (#16A34A)
+  Border:          2px solid green-600 (#16A34A)
 ```
 
 **Label:**
 
 ```
 Font:              Inter 500 14px
-Color:             brand-gray-900 (#1A1A1A)
+Color:             gray-900 (#1A1A1A)
 Display:           block (above the input — never placeholder-only)
 Margin-bottom:     6px
 ```
@@ -441,7 +441,7 @@ Margin-bottom:     6px
 **Placeholder text:**
 
 ```
-Color:             brand-gray-400 (#9A9A9A)
+Color:             gray-400 (#9A9A9A)
 Purpose:           Decorative hint only — never a replacement for a visible label
 ```
 
@@ -449,7 +449,7 @@ Purpose:           Decorative hint only — never a replacement for a visible la
 
 ```
 Font:              Inter 400 13px
-Color:             brand-gray-600 (#4A4A4A)
+Color:             gray-600 (#4A4A4A)
 Margin-top:        4px
 ```
 
@@ -457,7 +457,7 @@ Margin-top:        4px
 
 ```
 Font:              Inter 500 13px
-Color:             brand-red-600 (#DC2626)
+Color:             red-600 (#DC2626)
 Margin-top:        4px
 Role:              aria-live="polite" or associated via aria-describedby
 Icon:              16px warning icon before text (decorative)
@@ -477,7 +477,7 @@ Font:              Inter 400 16px (match input — not monospace)
 ```
 All input rules apply +
 Appearance:        none (custom arrow icon via background-image SVG)
-Arrow icon:        brand-gray-600, 16px, right-aligned
+Arrow icon:        gray-600, 16px, right-aligned
 ```
 
 **Radio and checkbox:**
@@ -485,10 +485,10 @@ Arrow icon:        brand-gray-600, 16px, right-aligned
 ```
 Custom styled — do not use browser defaults
 Size:              20x20px (touch target extended to 44x44px via padding)
-Border:            2px solid brand-gray-400 (#9A9A9A) unchecked
-Checked background: brand-blue-700 (#1A4B9C)
+Border:            2px solid gray-400 (#9A9A9A) unchecked
+Checked background: blue-700 (#1A4B9C)
 Checkmark / radio dot: white (#FFFFFF)
-Focus ring:        3px solid brand-blue-500 (#2E6FD8), offset 2px
+Focus ring:        3px solid blue-500 (#2E6FD8), offset 2px
 ```
 
 **Submit button:** See Primary Button specification above.
@@ -497,8 +497,8 @@ Focus ring:        3px solid brand-blue-500 (#2E6FD8), offset 2px
 
 ```
 Font:              Inter 400 13px
-Color:             brand-gray-600 (#4A4A4A)
-Icon:              lock/shield icon, brand-blue-700, 14px
+Color:             gray-600 (#4A4A4A)
+Icon:              lock/shield icon, blue-700, 14px
 ```
 
 ---
@@ -509,25 +509,25 @@ Use: All FAQ sections throughout the site. Single-open or multi-open (developer'
 
 ```
 Container:
-  Border-top:      1px solid brand-gray-200 (#E8E8E8)
+  Border-top:      1px solid gray-200 (#E8E8E8)
   Margin-bottom:   0
 
 Item:
-  Border-bottom:   1px solid brand-gray-200 (#E8E8E8)
+  Border-bottom:   1px solid gray-200 (#E8E8E8)
 
 Question (trigger button):
   Display:         flex, justify-between, align-items center
   Padding:         18px 0
   Font:            Inter 600 16px
-  Color:           brand-gray-900 (#1A1A1A)
+  Color:           gray-900 (#1A1A1A)
   Background:      transparent
   Cursor:          pointer
   Min height:      44px
-  Focus:           3px solid brand-blue-500, outline-offset 2px (on the question element, not the container)
-  Hover color:     brand-blue-700 (#1A4B9C)
+  Focus:           3px solid blue-500, outline-offset 2px (on the question element, not the container)
+  Hover color:     blue-700 (#1A4B9C)
 
 Chevron icon:
-  Color:           brand-blue-700 (#1A4B9C)
+  Color:           blue-700 (#1A4B9C)
   Size:            20px
   Transition:      rotate 200ms ease
   Open state:      rotate(180deg)
@@ -535,7 +535,7 @@ Chevron icon:
 Answer (panel):
   Padding:         0 0 18px 0 (no top padding — question padding provides visual gap)
   Font:            Inter 400 16px
-  Color:           brand-gray-900 (#1A1A1A) or brand-gray-600 for less critical text
+  Color:           gray-900 (#1A1A1A) or gray-600 for less critical text
   Line-height:     1.6
   Animation:       height expand/collapse 200ms ease (use CSS custom properties or JS for smooth animation)
   Overflow:        hidden when collapsed
@@ -573,28 +573,28 @@ Use: Floating AI chat assistant — all pages, bottom-right corner.
 ```
 Collapsed state (trigger button):
   Position:        fixed, bottom: 24px, right: 24px
-  Background:      brand-blue-700 (#1A4B9C)
+  Background:      blue-700 (#1A4B9C)
   Border-radius:   50% (circle button) or 28px (pill shape)
   Size:            56x56px (circle) — min touch target
   Icon:            chat bubble SVG, white, 24px
   Label text:      "Chat with us" (pill shape) — Inter 600 14px, white
   Box shadow:      0 4px 16px rgba(26, 75, 156, 0.35)
-  Hover:           brand-blue-900 background
-  Focus:           3px solid brand-blue-500, outline-offset 2px
-  Notification dot (when AI has a greeting ready): 8px circle, brand-gold-500, top-right of button
+  Hover:           blue-900 background
+  Focus:           3px solid blue-500, outline-offset 2px
+  Notification dot (when AI has a greeting ready): 8px circle, gold-500, top-right of button
 
 Expanded state (chat panel):
   Position:        fixed, bottom: 88px (above trigger button), right: 24px
   Width:           360px (desktop); 100vw - 32px (mobile, max 360px)
   Height:          min 400px, max 560px (scrollable message area)
   Background:      white (#FFFFFF)
-  Border:          1px solid brand-gray-200 (#E8E8E8)
+  Border:          1px solid gray-200 (#E8E8E8)
   Border-radius:   12px
   Box shadow:      0 8px 32px rgba(0, 0, 0, 0.15)
   z-index:         999
 
 Chat panel header:
-  Background:      brand-blue-900 (#0D2B6B)
+  Background:      blue-900 (#0D2B6B)
   Height:          56px
   Padding:         0 16px
   Border-radius:   12px 12px 0 0
@@ -603,10 +603,10 @@ Chat panel header:
   Close button:    X icon, white, 24px, top-right, 44x44px touch area
 
 Disclaimer banner (persistent inside panel, not dismissible):
-  Background:      brand-blue-100 (#E8F0FB)
-  Border-bottom:   1px solid brand-gray-200
+  Background:      blue-100 (#E8F0FB)
+  Border-bottom:   1px solid gray-200
   Padding:         8px 16px
-  Text:            "AI tool. Not an attorney. Do not share confidential details." — Inter 400 12px, brand-gray-600
+  Text:            "AI tool. Not an attorney. Do not share confidential details." — Inter 400 12px, gray-600
 
 Message area:
   Padding:         16px
@@ -614,14 +614,14 @@ Message area:
   Scroll behavior: smooth
 
 Assistant message bubble:
-  Background:      brand-gray-50 (#F7F7F8)
+  Background:      gray-50 (#F7F7F8)
   Border-radius:   4px 12px 12px 12px
   Padding:         10px 14px
-  Font:            Inter 400 15px, brand-gray-900
+  Font:            Inter 400 15px, gray-900
   Max-width:       85% of panel width
 
 User message bubble:
-  Background:      brand-blue-700 (#1A4B9C)
+  Background:      blue-700 (#1A4B9C)
   Text:            white (#FFFFFF)
   Border-radius:   12px 12px 4px 12px
   Padding:         10px 14px
@@ -631,7 +631,7 @@ User message bubble:
 
 Input area:
   Background:      white
-  Border-top:      1px solid brand-gray-200
+  Border-top:      1px solid gray-200
   Padding:         12px 16px
   Display:         flex, gap: 8px
 
@@ -642,22 +642,22 @@ Text input:
   Flex:            1
 
 Send button:
-  Background:      brand-blue-700
+  Background:      blue-700
   Width/Height:    36x36px
   Border-radius:   50%
   Icon:            send arrow, white, 16px
-  Focus:           3px solid brand-blue-500
+  Focus:           3px solid blue-500
 
 Loading indicator (while assistant is typing):
-  Three dots animated (brand-gray-400, pulsing), inside assistant message bubble
+  Three dots animated (gray-400, pulsing), inside assistant message bubble
 
 CTA links within assistant messages:
-  Color:           brand-blue-700, underline
+  Color:           blue-700, underline
   Font:            Inter 600 15px
 
 Call Now link (urgent escalation, inside assistant message):
   Display:         block
-  Background:      brand-gold-700 (#A07830)
+  Background:      gold-700 (#A07830)
   Text:            white, Inter 600 14px, centered
   Border-radius:   6px
   Padding:         10px 16px
@@ -673,7 +673,7 @@ Call Now link (urgent escalation, inside assistant message):
 **Required:** Real photography of Andre Jerry. No stock attorney photographs.
 
 **Hero shot specifications:**
-- Dominant background: dark blue (brand-blue-900) or charcoal — can be achieved with a photography background or post-processing overlay (semi-opaque brand-blue-900 overlay at 70% opacity over a lighter background)
+- Dominant background: dark blue (blue-900) or charcoal — can be achieved with a photography background or post-processing overlay (semi-opaque blue-900 overlay at 70% opacity over a lighter background)
 - Expression: confident, approachable, direct eye contact with camera
 - Attire: business professional — suit or dress shirt, no casual
 - Framing: upper body or three-quarter shot; leave visual space for H1 text overlay if hero uses the split layout
@@ -682,7 +682,7 @@ Call Now link (urgent escalation, inside assistant message):
 
 **Layout options for hero:**
 - Option A: Full-width dark overlay — Andre's photo fills the hero, dark blue overlay at 60–70% opacity, H1 and CTAs overlay the image. Most common legal site pattern; creates authority.
-- Option B: Two-column split — Left: H1, subhead, CTAs on white or brand-blue-900 background; Right: Andre's photo on blue/dark background, no overlay. Recommended — draws on Collins Law Firm benchmark pattern from competitive analysis. Feels more personal.
+- Option B: Two-column split — Left: H1, subhead, CTAs on white or blue-900 background; Right: Andre's photo on blue/dark background, no overlay. Recommended — draws on Collins Law Firm benchmark pattern from competitive analysis. Feels more personal.
 
 **Option B is preferred for the homepage hero.** The attorney-in-hero pattern tests better for trust on legal sites (competitive analysis finding: visitors make person-to-person judgments before firm-to-firm judgments).
 
@@ -901,7 +901,7 @@ Every focusable element must have a visible focus indicator. The default browser
 
 ```css
 :focus-visible {
-  outline: 3px solid #2E6FD8; /* brand-blue-500 */
+  outline: 3px solid #2E6FD8; /* blue-500 */
   outline-offset: 2px;
   border-radius: 4px; /* Matches button border-radius for visual consistency */
 }
@@ -931,7 +931,7 @@ select:focus {
 **Focus ring on dark backgrounds (nav links, buttons on blue-900):**
 
 ```css
-/* On brand-blue-900 background, blue-500 focus ring blends — use white offset */
+/* On blue-900 background, blue-500 focus ring blends — use white offset */
 .on-dark:focus-visible {
   outline: 3px solid #FFFFFF;
   outline-offset: 2px;

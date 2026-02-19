@@ -88,8 +88,9 @@ Stripe handles:
 Stripe Checkout session parameters (set server-side via Stripe API):
 - `mode: 'payment'` (one-time payment)
 - `line_items`: service name + amount
-- `success_url`: `https://delpalaw.com/pay/confirmation?session_id={CHECKOUT_SESSION_ID}`
-- `cancel_url`: `https://delpalaw.com/pay/flat-fee`
+- `success_url`: `${NEXT_PUBLIC_SITE_URL}/pay/confirmation?session_id={CHECKOUT_SESSION_ID}`
+  > **Developer note:** Set `NEXT_PUBLIC_SITE_URL=http://localhost:3000` in `.env.local` for local development.
+- `cancel_url`: `${NEXT_PUBLIC_SITE_URL}/pay/flat-fee`
 - `customer_email`: pre-filled from step 2
 - `metadata`: `{ flow: 'flat-fee', service: '[service_slug]', client_name: '[name]' }`
 
@@ -131,6 +132,10 @@ Server-side action on webhook:
 ---
 
 ## Flow 2 — Retainer (step-by-step)
+
+> ⚠️ **DO NOT IMPLEMENT until IOLTA compliance decision is made.**
+> See Open Items table. Retainer funds may require LawPay instead of Stripe for trust account compliance.
+> This must be confirmed with a bar compliance advisor before Task 9 retainer flow implementation.
 
 **Use case:** Client is paying a retainer deposit into Andre's trust account (IOLTA). This is a one-time payment that funds the retainer balance from which fees are drawn as work is performed.
 
@@ -189,8 +194,9 @@ Progress indicator: Step 2 of 3 — Your Information
 Stripe session parameters:
 - `mode: 'payment'` (one-time payment)
 - `line_items`: "Retainer Deposit — DELPALaw" + amount
-- `success_url`: `https://delpalaw.com/pay/confirmation?session_id={CHECKOUT_SESSION_ID}&flow=retainer`
-- `cancel_url`: `https://delpalaw.com/pay/retainer`
+- `success_url`: `${NEXT_PUBLIC_SITE_URL}/pay/confirmation?session_id={CHECKOUT_SESSION_ID}&flow=retainer`
+  > **Developer note:** Set `NEXT_PUBLIC_SITE_URL=http://localhost:3000` in `.env.local` for local development.
+- `cancel_url`: `${NEXT_PUBLIC_SITE_URL}/pay/retainer`
 - `customer_email`: pre-filled
 - `metadata`: `{ flow: 'retainer', client_name: '[name]', matter_type: '[selected]' }`
 
@@ -289,8 +295,9 @@ Progress indicator: Step 2 of 3 — Your Information
 Stripe session parameters:
 - `mode: 'subscription'` (recurring billing)
 - `line_items`: Stripe Price ID for monthly plan (created in Stripe Dashboard)
-- `success_url`: `https://delpalaw.com/pay/confirmation?session_id={CHECKOUT_SESSION_ID}&flow=subscription`
-- `cancel_url`: `https://delpalaw.com/pay/subscription`
+- `success_url`: `${NEXT_PUBLIC_SITE_URL}/pay/confirmation?session_id={CHECKOUT_SESSION_ID}&flow=subscription`
+  > **Developer note:** Set `NEXT_PUBLIC_SITE_URL=http://localhost:3000` in `.env.local` for local development.
+- `cancel_url`: `${NEXT_PUBLIC_SITE_URL}/pay/subscription`
 - `customer_email`: pre-filled
 - `subscription_data.metadata`: `{ flow: 'subscription', client_name: '[name]', business_name: '[business]' }`
 - `billing_address_collection: 'auto'`

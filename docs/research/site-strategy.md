@@ -75,7 +75,7 @@ DELPALaw
 │   └── Pennsylvania              /service-areas/pennsylvania
 ├── Reviews & Testimonials        /reviews
 ├── FAQ                           /faq
-│   ├── General FAQ               /faq (with practice area filter)
+│   ├── General FAQ               /faq (simple accordion, 10 general questions with links to practice-specific FAQ pages below)
 │   ├── Criminal Defense FAQ      /faq/criminal-defense
 │   ├── Estate Planning FAQ       /faq/estate-planning
 │   └── Business Law FAQ          /faq/business-law

@@ -154,7 +154,7 @@ The "Type instead" path is always immediately available — it is never hidden o
 
 **Placement:** Floating widget, bottom-right corner, all pages, collapsed by default. Opens on click. Widget label when collapsed: "Questions? Chat with us."
 
-**Technology:** Claude API (Anthropic). Model: claude-opus-4-6 or equivalent production-recommended model at time of launch. Temperature: 0.3 (consistent, conservative responses). Max tokens per response: 300 (concise replies enforced).
+**Technology:** Claude API (Anthropic). Model: claude-sonnet-4-6 (per implementation plan). Temperature: 0.3 (consistent, conservative responses). Max tokens per response: 300 (concise replies enforced). Note: Using claude-sonnet-4-6 per implementation plan. If response quality requires Opus, note that Opus is ~5x the cost per token — confirm before switching.
 
 **Opening state:** When expanded, the widget displays:
 - Header: "DELPALaw Assistant"
@@ -430,6 +430,8 @@ These triggers require the assistant to depart from normal routing behavior and 
 The following is the complete system prompt to be passed in the `system` parameter of the Claude API call. This is a production-ready draft. It must be reviewed by Andre before deployment and updated with the actual phone number and any firm-specific details.
 
 **Do not modify the guardrail sections without legal review.**
+
+> **Developer note:** Before deploying, replace `[PHONE NUMBER — INSERT BEFORE DEPLOYMENT]` with `process.env.NEXT_PUBLIC_PHONE_NUMBER` at runtime. Do not hardcode the phone number in the prompt string. Also replace any hardcoded URLs with `process.env.NEXT_PUBLIC_SITE_URL`.
 
 ---
 
