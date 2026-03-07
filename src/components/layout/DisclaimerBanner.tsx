@@ -1,17 +1,23 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useSyncExternalStore } from 'react'
+
+function getIsDismissed() {
+  if (typeof window === 'undefined') return true
+  return sessionStorage.getItem('disclaimer-dismissed') === 'true'
+}
 
 export function DisclaimerBanner() {
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const dismissed = sessionStorage.getItem('disclaimer-dismissed')
-    if (!dismissed) setVisible(true)
-  }, [])
+  const isDismissed = useSyncExternalStore(
+    () => () => {},
+    () => getIsDismissed(),
+    () => true,
+  )
+  const [manuallyDismissed, setManuallyDismissed] = useState(false)
+  const visible = !isDismissed && !manuallyDismissed
 
   const dismiss = () => {
     sessionStorage.setItem('disclaimer-dismissed', 'true')
-    setVisible(false)
+    setManuallyDismissed(true)
   }
 
   if (!visible) return null

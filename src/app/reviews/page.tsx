@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import { CtaBand } from '@/components/home/CtaBand'
 
 export const metadata: Metadata = {

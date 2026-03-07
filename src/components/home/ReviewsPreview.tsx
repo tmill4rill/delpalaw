@@ -21,7 +21,7 @@ export function ReviewsPreview() {
               <p className="text-yellow-500 mb-2" aria-label={`${review.rating} stars`}>
                 {'★'.repeat(review.rating)}
               </p>
-              <p className="text-sm text-gray-700 italic mb-3">"{review.text}"</p>
+              <p className="text-sm text-gray-700 italic mb-3">&quot;{review.text}&quot;</p>
               <p className="text-xs font-semibold text-gray-900">— {review.name}</p>
             </div>
           ))}

@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import { CtaBand } from '@/components/home/CtaBand'
 
 export const metadata: Metadata = {
@@ -34,7 +33,7 @@ export default function AboutPage() {
           A Lawyer Who Picks Up the Phone
         </h1>
         <p className="text-xl text-gray-600 leading-relaxed">
-          DELPALaw exists because legal help shouldn't feel intimidating, inaccessible, or expensive. Andre Jerry built this practice to be the kind of law firm he'd want to call if his family needed help.
+          DELPALaw exists because legal help shouldn&apos;t feel intimidating, inaccessible, or expensive. Andre Jerry built this practice to be the kind of law firm he&apos;d want to call if his family needed help.
         </p>
       </section>
 
@@ -102,7 +101,7 @@ export default function AboutPage() {
       {/* Quote placeholder */}
       <section className="py-12 px-4 max-w-3xl mx-auto">
         <blockquote className="border-l-4 border-gold-600 pl-6 text-xl text-gray-700 italic leading-relaxed">
-          "My goal is simple: give every client the kind of legal help that actually changes their situation — and be honest when I can't."
+          &quot;My goal is simple: give every client the kind of legal help that actually changes their situation — and be honest when I can&apos;t.&quot;
         </blockquote>
         <p className="mt-4 text-sm text-gray-500 pl-6">— Andre Jerry, DELPALaw</p>
       </section>

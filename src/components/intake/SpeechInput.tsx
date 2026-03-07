@@ -39,7 +39,7 @@ interface SpeechInputProps {
 
 export function SpeechInput({ value, onChange, id = 'speech-input', label }: SpeechInputProps) {
   const [isRecording, setIsRecording] = useState(false)
-  const [speechSupported, setSpeechSupported] = useState(false)
+  const [speechSupported] = useState(() => getSpeechRecognition() !== null)
   const [seconds, setSeconds] = useState(0)
   const recognitionRef = useRef<SpeechRecognitionInstance | null>(null)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -51,7 +51,6 @@ export function SpeechInput({ value, onChange, id = 'speech-input', label }: Spe
   useEffect(() => { onChangeRef.current = onChange }, [onChange])
 
   useEffect(() => {
-    setSpeechSupported(getSpeechRecognition() !== null)
     // Cleanup on unmount
     return () => {
       recognitionRef.current?.stop()

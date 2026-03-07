@@ -72,7 +72,7 @@ export default function FaqPage() {
       <section className="py-16 px-4 max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
         <p className="text-gray-600 text-lg mb-12">
-          Common questions about working with DELPALaw. If you don't see your question here, ask us directly.
+          Common questions about working with DELPALaw. If you don&apos;t see your question here, ask us directly.
         </p>
 
         <FaqAccordion items={faqs} id="general-faq" />

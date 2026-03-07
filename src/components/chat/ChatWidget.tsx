@@ -1,5 +1,6 @@
 'use client'
 import { useState, useRef, useEffect, useCallback } from 'react'
+import Link from 'next/link'
 import { ChatMessage } from './ChatMessage'
 
 interface Message {
@@ -185,18 +186,18 @@ export function ChatWidget() {
 
         {/* Quick links */}
         <div className="px-3 pb-2 flex gap-2 flex-wrap">
-          <a
+          <Link
             href="/contact"
             className="text-xs bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1 hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 transition-colors"
           >
             Book a consult
-          </a>
-          <a
+          </Link>
+          <Link
             href="/pay"
             className="text-xs bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1 hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 transition-colors"
           >
             Pay invoice
-          </a>
+          </Link>
         </div>
 
         {/* Input */}

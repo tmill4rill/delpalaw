@@ -30,7 +30,7 @@ export default function DisclaimerPage() {
 
       <h2>Licensed in Delaware and Pennsylvania</h2>
       <p>
-        Andre Jerry is licensed to practice law in the State of Delaware and the Commonwealth of Pennsylvania. References to "DELPALaw" refer to the law practice of Andre Jerry. This site is not intended to solicit clients in jurisdictions where DELPALaw is not licensed to practice.
+        Andre Jerry is licensed to practice law in the State of Delaware and the Commonwealth of Pennsylvania. References to &quot;DELPALaw&quot; refer to the law practice of Andre Jerry. This site is not intended to solicit clients in jurisdictions where DELPALaw is not licensed to practice.
       </p>
 
       <h2>Responsible Attorney</h2>

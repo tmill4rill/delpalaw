@@ -64,7 +64,7 @@ export default function PracticeAreasPage() {
         <p className="text-center mt-10 text-gray-600 text-sm">
           Not sure where to start?{' '}
           <Link href="/contact" className="text-blue-700 font-semibold hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">
-            Contact us and we'll point you in the right direction.
+            Contact us and we&apos;ll point you in the right direction.
           </Link>
         </p>
       </section>

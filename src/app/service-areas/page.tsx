@@ -74,7 +74,7 @@ export default function ServiceAreasPage() {
       {/* Remote callout */}
       <section className="py-10 px-4 bg-cream">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-blue-900 mb-3">Can't Travel? No Problem.</h2>
+          <h2 className="text-2xl font-bold text-blue-900 mb-3">Can&apos;t Travel? No Problem.</h2>
           <p className="text-gray-700 mb-6">
             DELPALaw offers remote consultations by phone and video for clients anywhere in Delaware and Pennsylvania. Most matters can be handled entirely online — from intake to document signing.
           </p>
